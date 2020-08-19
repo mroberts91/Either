@@ -30,14 +30,17 @@ namespace Either.Samples.WebApi.Controllers
 
         [HttpPost]
         public IActionResult Post([FromBody] UserCreateRequest request)
-            => _repository.Create(request.Email, request.Name)
-            .Value switch
+        {
+            var result = _repository.Create(request.Email, request.Name);
+                
+            return result.Value switch
             {
-                Guid guid =>                        Created(guid.ToString(), guid),
-                ArgumentException ex =>             BadRequest(new { ex.Message, request }),
-                InvalidDataContractException ex =>  BadRequest(new { ex.Message, request }),
-                _ =>                                ServerError()
+                Guid guid =>  Created(guid.ToString(), guid),
+                ArgumentException ex => BadRequest(new { ex.Message, request }),
+                InvalidDataContractException ex => BadRequest(new { ex.Message, request }),
+                _ => ServerError()
             };
+        }
 
         private IActionResult ServerError()
             => StatusCode(StatusCodes.Status500InternalServerError, new { Message = "Unable to process request at this time." });

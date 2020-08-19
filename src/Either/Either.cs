@@ -6,7 +6,7 @@ namespace Either
     public struct Either<T, TError>
         where TError : Exception
     {
-        private object Value;
+        public object Value { get; private set; }
 
         private Either(T value) { Value = value; }
         private Either(TError value) { Value = value; }
@@ -32,7 +32,7 @@ namespace Either
         where TError1 : Exception
         where TError2 : Exception
     {
-        private object Value;
+        public object Value { get; private set; }
 
         private Either(T value) { Value = value; }
         private Either(TError1 value) { Value = value; }
@@ -62,7 +62,7 @@ namespace Either
         where TError2 : Exception
         where TError3 : Exception
     {
-        private readonly object Value;
+        public object Value { get; private set; }
 
         private Either(T value) { Value = value; }
         private Either(TError1 value) { Value = value; }

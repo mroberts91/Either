@@ -1,4 +1,5 @@
 # Either
+![Nuget](https://img.shields.io/nuget/v/Option.Either?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/mroberts91/Either)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/mroberts91/Either/master)
 

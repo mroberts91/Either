@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Either\Either.csproj" />
+    <PackageReference Include="Option.Either" Version="0.0.1" />
   </ItemGroup>
 
   <ItemGroup>

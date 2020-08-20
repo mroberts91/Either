@@ -1,4 +1,7 @@
 # Either
+![GitHub](https://img.shields.io/github/license/mroberts91/Either)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/mroberts91/Either/master)
+
 Creates a simple struct that can be used as discriminated union like return type, supporting the successful result as well as up to four additonal exceptions that can be returned.
 
 ### Example using the built in ```Resolve``` method

@@ -86,4 +86,40 @@ namespace Either
     }
 
     #endregion
+
+    #region<T, TError1, TError2, TError3, TError4>
+
+    public struct Either<T, TError1, TError2, TError3, TError4>
+        where TError1 : Exception
+        where TError2 : Exception
+        where TError3 : Exception
+        where TError4 : Exception
+    {
+        public object Value { get; private set; }
+
+        private Either(T value) { Value = value; }
+        private Either(TError1 value) { Value = value; }
+        private Either(TError2 value) { Value = value; }
+        private Either(TError3 value) { Value = value; }
+        private Either(TError4 value) { Value = value; }
+
+        public static implicit operator Either<T, TError1, TError2, TError3, TError4>(T t) => new Either<T, TError1, TError2, TError3, TError4>(t);
+        public static implicit operator Either<T, TError1, TError2, TError3, TError4>(TError1 t) => new Either<T, TError1, TError2, TError3, TError4>(t);
+        public static implicit operator Either<T, TError1, TError2, TError3, TError4>(TError2 t) => new Either<T, TError1, TError2, TError3, TError4>(t);
+        public static implicit operator Either<T, TError1, TError2, TError3, TError4>(TError3 t) => new Either<T, TError1, TError2, TError3, TError4>(t);
+        public static implicit operator Either<T, TError1, TError2, TError3, TError4>(TError4 t) => new Either<T, TError1, TError2, TError3, TError4>(t);
+
+        public TResult Resolve<TResult>((Func<T, TResult> success, Func<TError1, TResult> error1, Func<TError2, TResult> error2, Func<TError3, TResult> error3, Func<TError4, TResult> error4) actions)
+            => (Value, actions) switch
+            {
+                (T, { success: not null }) => actions.success.Invoke((T)Value),
+                (TError1, { error1: not null }) => actions.error1.Invoke((TError1)Value),
+                (TError2, { error2: not null }) => actions.error2.Invoke((TError2)Value),
+                (TError3, { error3: not null }) => actions.error3.Invoke((TError3)Value),
+                (TError4, { error4: not null }) => actions.error4.Invoke((TError4)Value),
+                _ => throw new InvalidOperationException($"Unable to resolve {GetType().Name} due to missing action handler.")
+            };
+    }
+
+    #endregion
 }

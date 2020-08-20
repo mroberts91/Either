@@ -11,13 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8F830B06
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Either.Tests", "tests\Either.Tests\Either.Tests.csproj", "{E0D2C5A9-C6A6-4F0F-B152-6AC0E0C65D04}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{450B44AF-25A8-4D09-BFE2-D11E61888B42}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Either.Samples.WebApi", "samples\Either.Samples.WebApi\Either.Samples.WebApi.csproj", "{5245272A-3C5F-45D8-A2B9-71066C80BD89}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{90534054-0E2A-490E-80F8-8EAFC6924D5F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{11AB8197-4840-4AD9-ABEB-1210C21EAF57}"
 	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
+		assets\Simple_5_Leaf_Binary_Tree.png = assets\Simple_5_Leaf_Binary_Tree.png
 	EndProjectSection
 EndProject
 Global
@@ -54,18 +50,6 @@ Global
 		{E0D2C5A9-C6A6-4F0F-B152-6AC0E0C65D04}.Release|x64.Build.0 = Release|Any CPU
 		{E0D2C5A9-C6A6-4F0F-B152-6AC0E0C65D04}.Release|x86.ActiveCfg = Release|Any CPU
 		{E0D2C5A9-C6A6-4F0F-B152-6AC0E0C65D04}.Release|x86.Build.0 = Release|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Debug|x64.Build.0 = Debug|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Debug|x86.Build.0 = Debug|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Release|x64.ActiveCfg = Release|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Release|x64.Build.0 = Release|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Release|x86.ActiveCfg = Release|Any CPU
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,7 +57,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F24D15EC-130D-4978-AEAF-BA2B70A81E5E} = {E3E9C951-4ACA-40B9-BC5E-971523CA7E44}
 		{E0D2C5A9-C6A6-4F0F-B152-6AC0E0C65D04} = {8F830B06-0A1C-4556-AD95-60A0C6CFE1E9}
-		{5245272A-3C5F-45D8-A2B9-71066C80BD89} = {450B44AF-25A8-4D09-BFE2-D11E61888B42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {63A65F86-74D3-439F-BA57-740F0F55B3A2}

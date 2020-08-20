@@ -19,14 +19,16 @@ namespace Either.Samples.WebApi.Controllers
         [HttpGet]
         public IActionResult Get() 
             => Ok(_repository.ListUsers());
-        
+
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
-            => _repository.User(id)
-                          .Resolve<IActionResult>((
-                            user => Ok(user),
-                            error => NotFound()
-                          ));
+        {
+           return  _repository.User(id)
+                              .Resolve<IActionResult>((
+                                user => Ok(user),
+                                error => NotFound()
+                            ));
+        }
 
         [HttpPost]
         public IActionResult Post([FromBody] UserCreateRequest request)

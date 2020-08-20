@@ -9,5 +9,11 @@
     <ProjectReference Include="..\..\src\Either\Either.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Either">
+      <HintPath>..\..\src\Either\bin\Release\netstandard2.1\Either.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 
 </Project>

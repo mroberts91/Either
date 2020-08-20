@@ -1,12 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <LangVersion>Preview</LangVersion>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Version>0.0.1</Version>
+    <Authors>Michael Robertson</Authors>
+    <Description>A simple library that adds a struct to be used as a discriminated union like return type.</Description>
+    <Copyright>Copyright (c) 2020 Michael Robertson</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/mroberts91/Either</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mroberts91/Either</RepositoryUrl>
+    <PackageTags>Discriminated Union, Discriminated, Union, Return</PackageTags>
+    <PackageReleaseNotes>Logo: Pat Hawks / CC BY-SA (https://creativecommons.org/licenses/by-sa/4.0)</PackageReleaseNotes>
+    <PackageIcon>Simple_5_Leaf_Binary_Tree.png</PackageIcon>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>Option.Either</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\..\assets\Simple_5_Leaf_Binary_Tree.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

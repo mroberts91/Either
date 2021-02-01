@@ -15,14 +15,11 @@ public struct Either<T, TError1, TError2, TError3, TError4> {}
 
 ### Example using the built in ```Resolve``` method
 ```C#
-public IActionResult Get(Guid id)
-{
-   return  _repository.User(id)
-                      .Resolve<IActionResult>(
-                          user => Ok(user),
-                          error => NotFound()
-                      );
-}
+public IActionResult Get(Guid id) => 
+   _repository.User(id).Resolve<IActionResult>(
+      user => Ok(user),
+      error => NotFound()
+   );
 ```
 ### Example using C# pattern mathcing
 ```C#

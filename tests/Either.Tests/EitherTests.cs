@@ -8,77 +8,54 @@ namespace Either.Tests
     public class EitherTests
     {
         [Fact]
-        public void OnSuccess_Valid()
-        {
-            var result = Process();
-
-            var httpStatusCode = result.Resolve((
+        public void OnSuccess_Valid() =>
+            Process(true).Resolve(
                 user => StatusCodes.Status200OK,
                 error => StatusCodes.Status400BadRequest
-            ));
-
-            httpStatusCode.ShouldBe(StatusCodes.Status200OK);
-        }
+            )
+            .ShouldBe(StatusCodes.Status200OK);
 
         [Fact]
-        public void OnError_Valid()
-        {
-            var result = Process(true);
+        public void OnSuccess_Valid_Pattern() =>
+            (Process(true).Value switch
+            {
+                User => StatusCodes.Status200OK,
+                InvalidEmailException => StatusCodes.Status400BadRequest
+            })
+            .ShouldBe(StatusCodes.Status200OK);
 
-            var httpStatusCode = result.Resolve((
+        [Fact]
+        public void OnError_Valid() =>
+            Process().Resolve(
                 user => StatusCodes.Status200OK,
                 error => StatusCodes.Status400BadRequest
-            ));
-
-            httpStatusCode.ShouldBe(StatusCodes.Status400BadRequest);
-        }
+            )
+            .ShouldBe(StatusCodes.Status400BadRequest);
 
         [Fact]
-        public void OnSuccess_Invalid()
-        {
-            var result = Process();
-
-            Should.Throw(() =>
-            {
-                result.Resolve((
-                null,
-                error => StatusCodes.Status400BadRequest
-            ));
-            }, typeof(InvalidOperationException));
-
-        }
+        public void OnError_Valid_Pattern() =>
+            (Process().Value switch
+            { 
+                User => StatusCodes.Status200OK,
+                InvalidEmailException => StatusCodes.Status400BadRequest
+            })
+            .ShouldBe(StatusCodes.Status400BadRequest);
 
         [Fact]
-        public void OnError_Invalid()
-        {
-            var result = Process();
+        public void OnSuccess_Invalid() =>
+            Should.Throw(() => Process(false).Resolve(null, error => StatusCodes.Status400BadRequest), typeof(NullReferenceException));
 
-            Should.Throw(() =>
-            {
-                result.Resolve<int>((
-                null,
-                null
-            ));
-            }, typeof(InvalidOperationException));
-        }
+        [Fact]
+        public void OnError_Invalid() =>
+            Should.Throw(() => Process(true).Resolve<int>(null,null) ,typeof(NullReferenceException));
 
-        private Either<User, InvalidEmailException> Process(bool? isValidEmail = null)
-        {
-            if(isValidEmail == true)
-                return new InvalidEmailException();
+        private static Either<User, InvalidEmailException> Process(bool? isValidEmail = null) =>
+            isValidEmail is null ? new InvalidEmailException() : TestUser;
 
-            return TestUser;
-        }
+        private static User TestUser => new User("Test User", "test@test.com");
 
-        private User TestUser => new User { FullName = "Test User", Email = "test@test.com" };
-
-        private class User
-        {
-            public string FullName { get; set; }
-
-            public string Email { get; set; }
-        }
-
+        private record User(string FullName, string Email);
+        
         private class InvalidEmailException : Exception { }
     }
 }
